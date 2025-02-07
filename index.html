@@ -1,0 +1,62 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Will You Be My Best Friend?
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   .shuffle {
+    position: absolute;
+   }
+  </style>
+ </head>
+ <body class="bg-gray-100 font-roboto">
+  <div class="min-h-screen flex flex-col items-center justify-center relative">
+   <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full text-center">
+    <img alt="A cute cartoon character holding a heart" class="mx-auto mb-4 rounded-full" height="150" src="https://storage.googleapis.com/a1aa/image/DR9BCkouYeJ0BgIBgwMToSTgKx3NXY03aXGU3Q1hNDM.jpg" width="150"/>
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">
+     Will You Be My Best Friend?
+    </h1>
+    <p class="text-gray-600 mb-6">
+     I would love to have you as my best friend. We can share secrets, laugh together, and support each other through thick and thin.
+    </p>
+    <div class="flex justify-center space-x-4 relative">
+     <button class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" onclick="redirectToImage()">
+      <i class="fas fa-check">
+      </i>
+      Yes
+     </button>
+     <button class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 shuffle" onclick="shuffleButton()">
+      <i class="fas fa-times">
+      </i>
+      No
+     </button>
+    </div>
+   </div>
+  </div>
+  <script>
+   function redirectToImage() {
+    window.location.href = "img.html";
+   }
+   function shuffleButton() {
+    const button = document.querySelector('.shuffle');
+    const container = button.parentElement;
+    const containerRect = container.getBoundingClientRect();
+    const buttonRect = button.getBoundingClientRect();
+    const maxX = containerRect.width - buttonRect.width;
+    const maxY = containerRect.height - buttonRect.height;
+    let randomX, randomY;
+    do {
+     randomX = Math.floor(Math.random() * maxX);
+     randomY = Math.floor(Math.random() * maxY);
+    } while (randomX < buttonRect.width && randomY < buttonRect.height);
+    button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+   }
+  </script>
+ </body>
+</html>
